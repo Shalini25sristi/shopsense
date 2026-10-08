@@ -192,6 +192,37 @@ Use a different port with `PORT=4000 npm start`, or a different database file wi
 
 ---
 
+## Deploy on Render
+
+This is a **long-running Node service with a persistent SQLite file**, so it needs
+a host that gives you a writable disk — **Render** fits well. GitHub Pages / Vercel /
+Firebase Hosting are static or serverless and will not persist the database.
+
+The repo ships a [`render.yaml`](render.yaml) Blueprint and a [`Dockerfile`](Dockerfile).
+
+**Option A — Blueprint (fastest):**
+1. Push this repo to GitHub (already done).
+2. In Render: **New → Blueprint**, pick the repo. Render reads `render.yaml`.
+3. Apply. It creates a **Web Service** with:
+   - runtime **node**, start `npm start`, health check `/api/health`
+   - `NODE_VERSION=22`, generated `JWT_SECRET`, `SHOPSENSE_DB=/var/data/shopsense.db`
+   - a **1 GB persistent disk** mounted at `/var/data` (the database lives here)
+
+**Option B — manual Web Service:**
+1. Render → **New → Web Service** → connect the repo.
+2. Runtime **Node**, Build `npm install`, Start `npm start`.
+3. Add env vars: `NODE_VERSION=22`, `JWT_SECRET=<random>`, `SHOPSENSE_DB=/var/data/shopsense.db`.
+4. Add a **Disk** mounted at `/var/data`.
+5. Deploy.
+
+Notes:
+- **Node 22.5+ is required** (the app uses the built-in `node:sqlite`). `engines` / `.node-version` pin it.
+- Persistent disks need a **paid instance** (`plan: starter`). On the **free plan**, drop the `disk` block and `SHOPSENSE_DB`; the catalogue still works (seed JSON is committed) but accounts/cart/orders reset on restart.
+- No `npm install` is really needed (zero dependencies), but Render runs it harmlessly.
+- First boot seeds the SQLite database from the committed `data/*.json` (the full 579-product catalogue with real images).
+
+---
+
 ## Profiles & guest browsing
 
 The site works fully for **guests** — browsing, search and product pages need no

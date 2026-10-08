@@ -115,7 +115,7 @@ function main() {
     serveStatic(res, url.pathname);
   });
 
-  server.listen(PORT, () => {
+  server.listen(PORT, "0.0.0.0", () => {
     console.log(`\n  ShopSense running at http://localhost:${PORT}`);
     console.log(`  API base:            http://localhost:${PORT}/api`);
     console.log(`  Try: /search?q=running+shoes+for+flat+feet`);

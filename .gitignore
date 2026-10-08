@@ -7,11 +7,8 @@ npm-debug.log*
 coverage/
 *.log
 
-# Generated seed data (regenerate with `npm run seed`)
-data/products.json
-data/interactions.json
-data/users.json
-data/extra-products.json
+# Seed JSON is committed so deploys get the full catalogue offline.
+# Regenerate with `npm run seed`.
 
 # SQLite database + signing secret (regenerate with `npm run db:reset`)
 data/*.db

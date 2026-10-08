@@ -1,0 +1,602 @@
+[
+  {
+    "id": "u_1",
+    "name": "Aarav",
+    "preferences": {
+      "category": "Womens Jewellery",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "eyewear",
+        "non-food-products"
+      ]
+    },
+    "coldStart": true,
+    "createdAt": "2026-05-25T07:11:21.773Z"
+  },
+  {
+    "id": "u_2",
+    "name": "Diya",
+    "preferences": {
+      "category": "Kitchen Accessories",
+      "secondCategory": "Conditioner",
+      "priceBand": "budget",
+      "likedTags": [
+        "hair-oils",
+        "tinted lip balms"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-04-07T07:11:21.773Z"
+  },
+  {
+    "id": "u_3",
+    "name": "Vivaan",
+    "preferences": {
+      "category": "Womens Shoes",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "leather bags",
+        "shampoo"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-01-27T07:11:21.773Z"
+  },
+  {
+    "id": "u_4",
+    "name": "Ananya",
+    "preferences": {
+      "category": "Womens Shoes",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "compact cars",
+        "steam therapy hair masks"
+      ]
+    },
+    "coldStart": true,
+    "createdAt": "2026-05-12T07:11:21.773Z"
+  },
+  {
+    "id": "u_5",
+    "name": "Aditya",
+    "preferences": {
+      "category": "Womens Jewellery",
+      "secondCategory": null,
+      "priceBand": "premium",
+      "likedTags": [
+        "facial sunscreens",
+        "face cream"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2025-12-06T07:11:21.773Z"
+  },
+  {
+    "id": "u_6",
+    "name": "Ishita",
+    "preferences": {
+      "category": "Tablets",
+      "secondCategory": "Skin Care",
+      "priceBand": "mid",
+      "likedTags": [
+        "eyewear",
+        "shampoos for children"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-06-19T07:11:21.773Z"
+  },
+  {
+    "id": "u_7",
+    "name": "Kabir",
+    "preferences": {
+      "category": "Hair Oils",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "sunscreen",
+        "cricket"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-08-16T07:11:21.773Z"
+  },
+  {
+    "id": "u_8",
+    "name": "Saanvi",
+    "preferences": {
+      "category": "Laptops",
+      "secondCategory": null,
+      "priceBand": "premium",
+      "likedTags": [
+        "haircare",
+        "clothing"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-05-24T07:11:21.773Z"
+  },
+  {
+    "id": "u_9",
+    "name": "Arjun",
+    "preferences": {
+      "category": "Tablets",
+      "secondCategory": "Face Cream",
+      "priceBand": "budget",
+      "likedTags": [
+        "lipstick",
+        "moisturizer"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-03-08T07:11:21.773Z"
+  },
+  {
+    "id": "u_10",
+    "name": "Myra",
+    "preferences": {
+      "category": "Face Serum",
+      "secondCategory": "Motorcycle",
+      "priceBand": "budget",
+      "likedTags": [
+        "photo frame",
+        "face powder"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-01-17T07:11:21.773Z"
+  },
+  {
+    "id": "u_11",
+    "name": "Reyansh",
+    "preferences": {
+      "category": "Laptops",
+      "secondCategory": "Tablets",
+      "priceBand": "premium",
+      "likedTags": [
+        "american football",
+        "hair repair treatments"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-02-14T07:11:21.773Z"
+  },
+  {
+    "id": "u_12",
+    "name": "Aadhya",
+    "preferences": {
+      "category": "Vehicle",
+      "secondCategory": "Sports Accessories",
+      "priceBand": "premium",
+      "likedTags": [
+        "volleyball",
+        "lip glosses"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-08-30T07:11:21.773Z"
+  },
+  {
+    "id": "u_13",
+    "name": "Krishna",
+    "preferences": {
+      "category": "Skin Care",
+      "secondCategory": "Conditioner",
+      "priceBand": "premium",
+      "likedTags": [
+        "organization",
+        "hand creams"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-04-07T07:11:21.773Z"
+  },
+  {
+    "id": "u_14",
+    "name": "Anika",
+    "preferences": {
+      "category": "Laptops",
+      "secondCategory": "Womens Watches",
+      "priceBand": "mid",
+      "likedTags": [
+        "sports equipment",
+        "sunscreen"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-07-21T07:11:21.773Z"
+  },
+  {
+    "id": "u_15",
+    "name": "Ishaan",
+    "preferences": {
+      "category": "Groceries",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "cosmetics",
+        "eyewear"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-08-23T07:11:21.773Z"
+  },
+  {
+    "id": "u_16",
+    "name": "Navya",
+    "preferences": {
+      "category": "Beauty",
+      "secondCategory": "Perfume",
+      "priceBand": "mid",
+      "likedTags": [
+        "home decoration",
+        "lipstick sets"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-08-23T07:11:21.773Z"
+  },
+  {
+    "id": "u_17",
+    "name": "Rohan",
+    "preferences": {
+      "category": "Mobile Accessories",
+      "secondCategory": "Sports Accessories",
+      "priceBand": "premium",
+      "likedTags": [
+        "baking",
+        "office chairs"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-07-28T07:11:21.773Z"
+  },
+  {
+    "id": "u_18",
+    "name": "Pari",
+    "preferences": {
+      "category": "Hair Oils",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "sports accessories",
+        "cat food"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-07-08T07:11:21.773Z"
+  },
+  {
+    "id": "u_19",
+    "name": "Karan",
+    "preferences": {
+      "category": "Face Serum",
+      "secondCategory": null,
+      "priceBand": "budget",
+      "likedTags": [
+        "sunscreen sprays",
+        "women's shoes"
+      ]
+    },
+    "coldStart": true,
+    "createdAt": "2026-07-01T07:11:21.773Z"
+  },
+  {
+    "id": "u_20",
+    "name": "Riya",
+    "preferences": {
+      "category": "Sunglasses",
+      "secondCategory": null,
+      "priceBand": "premium",
+      "likedTags": [
+        "sports equipment",
+        "cutting boards"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-05-15T07:11:21.773Z"
+  },
+  {
+    "id": "u_21",
+    "name": "Dev",
+    "preferences": {
+      "category": "Mens Shoes",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "backpacks",
+        "lips"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2025-11-20T07:11:21.773Z"
+  },
+  {
+    "id": "u_22",
+    "name": "Kiara",
+    "preferences": {
+      "category": "Womens Bags",
+      "secondCategory": null,
+      "priceBand": "budget",
+      "likedTags": [
+        "phone accessories",
+        "shampoos + shower gels"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2025-11-23T07:11:21.773Z"
+  },
+  {
+    "id": "u_23",
+    "name": "Ayaan",
+    "preferences": {
+      "category": "Mens Shoes",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "golf",
+        "dietary-supplements"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-02-28T07:11:21.773Z"
+  },
+  {
+    "id": "u_24",
+    "name": "Avni",
+    "preferences": {
+      "category": "Sports Accessories",
+      "secondCategory": "Shampoo",
+      "priceBand": "mid",
+      "likedTags": [
+        "phone accessories",
+        "foot creams"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-01-26T07:11:21.773Z"
+  },
+  {
+    "id": "u_25",
+    "name": "Vihaan",
+    "preferences": {
+      "category": "Skin Care",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "corsets",
+        "body"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-07-10T07:11:21.773Z"
+  },
+  {
+    "id": "u_26",
+    "name": "Sara",
+    "preferences": {
+      "category": "Furniture",
+      "secondCategory": null,
+      "priceBand": "budget",
+      "likedTags": [
+        "condiments",
+        "baseball"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-06-07T07:11:21.773Z"
+  },
+  {
+    "id": "u_27",
+    "name": "Om",
+    "preferences": {
+      "category": "Perfume",
+      "secondCategory": "Sunscreen",
+      "priceBand": "premium",
+      "likedTags": [
+        "casual shoes",
+        "body lotion"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-05-26T07:11:21.773Z"
+  },
+  {
+    "id": "u_28",
+    "name": "Meera",
+    "preferences": {
+      "category": "Motorcycle",
+      "secondCategory": "Sports Accessories",
+      "priceBand": "mid",
+      "likedTags": [
+        "cricket",
+        "skincare"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-03-10T07:11:21.773Z"
+  },
+  {
+    "id": "u_29",
+    "name": "Yash",
+    "preferences": {
+      "category": "Home Decoration",
+      "secondCategory": "Womens Dresses",
+      "priceBand": "premium",
+      "likedTags": [
+        "footwear",
+        "phone accessories"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-06-05T07:11:21.773Z"
+  },
+  {
+    "id": "u_30",
+    "name": "Tara",
+    "preferences": {
+      "category": "Tablets",
+      "secondCategory": "Motorcycle",
+      "priceBand": "mid",
+      "likedTags": [
+        "groceries",
+        "strainers"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-07-01T07:11:21.773Z"
+  },
+  {
+    "id": "u_31",
+    "name": "Neel",
+    "preferences": {
+      "category": "Hair Oils",
+      "secondCategory": "Womens Jewellery",
+      "priceBand": "premium",
+      "likedTags": [
+        "non-food-products",
+        "hair-oils"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-01-05T07:11:21.773Z"
+  },
+  {
+    "id": "u_32",
+    "name": "Zara",
+    "preferences": {
+      "category": "Beauty",
+      "secondCategory": null,
+      "priceBand": "budget",
+      "likedTags": [
+        "cooktops",
+        "home decor"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-01-18T07:11:21.773Z"
+  },
+  {
+    "id": "u_33",
+    "name": "Aryan",
+    "preferences": {
+      "category": "Furniture",
+      "secondCategory": null,
+      "priceBand": "premium",
+      "likedTags": [
+        "tablets",
+        "womens dresses"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2025-12-18T07:11:21.773Z"
+  },
+  {
+    "id": "u_34",
+    "name": "Naina",
+    "preferences": {
+      "category": "Sunscreen",
+      "secondCategory": "Moisturizer",
+      "priceBand": "budget",
+      "likedTags": [
+        "oil",
+        "scooters"
+      ]
+    },
+    "coldStart": true,
+    "createdAt": "2026-04-08T07:11:21.773Z"
+  },
+  {
+    "id": "u_35",
+    "name": "Rudra",
+    "preferences": {
+      "category": "Hair Oils",
+      "secondCategory": null,
+      "priceBand": "budget",
+      "likedTags": [
+        "baby lotions",
+        "body gels"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-08-10T07:11:21.773Z"
+  },
+  {
+    "id": "u_36",
+    "name": "Aisha",
+    "preferences": {
+      "category": "Face Serum",
+      "secondCategory": "Skin Care",
+      "priceBand": "budget",
+      "likedTags": [
+        "skin care",
+        "heat protectants"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-04-14T07:11:21.773Z"
+  },
+  {
+    "id": "u_37",
+    "name": "Shaurya",
+    "preferences": {
+      "category": "Hair Mask",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "vegetables",
+        "cups"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-09-04T07:11:21.773Z"
+  },
+  {
+    "id": "u_38",
+    "name": "Kavya",
+    "preferences": {
+      "category": "Fragrances",
+      "secondCategory": "Beauty",
+      "priceBand": "mid",
+      "likedTags": [
+        "wireless earphones",
+        "hair treatment masks"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-02-14T07:11:21.773Z"
+  },
+  {
+    "id": "u_39",
+    "name": "Atharv",
+    "preferences": {
+      "category": "Tops",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "hatchbacks",
+        "over-ear headphones"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-02-03T07:11:21.773Z"
+  },
+  {
+    "id": "u_40",
+    "name": "Nitya",
+    "preferences": {
+      "category": "Conditioner",
+      "secondCategory": null,
+      "priceBand": "mid",
+      "likedTags": [
+        "sports accessories",
+        "2-in-1 shampoos"
+      ]
+    },
+    "coldStart": false,
+    "createdAt": "2026-06-24T07:11:21.773Z"
+  }
+]

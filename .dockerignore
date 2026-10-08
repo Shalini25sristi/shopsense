@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log*
+.git
+.gitignore
+.env
+.env.*
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/.jwt-secret
+coverage
+*.log
+ShopSense-Project-Abstract.pdf

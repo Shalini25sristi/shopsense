@@ -21,7 +21,7 @@
     "information-retrieval"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22.5.0"
   },
   "license": "MIT"
 }
