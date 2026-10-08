@@ -10,4 +10,3 @@ data/*.db-shm
 data/.jwt-secret
 coverage
 *.log
-ShopSense-Project-Abstract.pdf
