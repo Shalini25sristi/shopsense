@@ -1,0 +1,27 @@
+{
+  "name": "shopsense",
+  "version": "1.0.0",
+  "description": "ShopSense - E-Commerce Search & Recommendation System. Hybrid search (BM25 + vector), personalized recommendations (popularity, content-based, item-item CF, matrix factorization), curated lists and a REST API. Zero runtime dependencies.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node scripts/seed.js",
+    "db:reset": "node scripts/reset-db.js",
+    "affiliate:resolve": "node scripts/resolve-product-links.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "e-commerce",
+    "search",
+    "recommendation",
+    "bm25",
+    "collaborative-filtering",
+    "information-retrieval"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

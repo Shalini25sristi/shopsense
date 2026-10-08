@@ -1,0 +1,20 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+.env
+.env.*
+!.env.example
+coverage/
+*.log
+
+# Generated seed data (regenerate with `npm run seed`)
+data/products.json
+data/interactions.json
+data/users.json
+data/extra-products.json
+
+# SQLite database + signing secret (regenerate with `npm run db:reset`)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/.jwt-secret
