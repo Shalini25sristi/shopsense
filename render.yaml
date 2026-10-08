@@ -1,17 +1,17 @@
 # Render Blueprint for ShopSense.
 # Docs: https://render.com/docs/blueprint-spec
 #
-# Notes:
-#  - The app needs Node >= 22.5 (it uses the built-in node:sqlite module).
-#  - A persistent disk keeps the SQLite database across deploys/restarts.
-#    Disks require a paid instance type (plan: starter). On the free plan,
-#    remove the `disk` block and the SHOPSENSE_DB variable below — the app
-#    still works, but accounts/cart/orders reset on restart.
+# Default deploy uses the FREE plan (no billing required). The full catalogue is
+# committed as data/*.json, so the site works even though the free plan has no
+# persistent disk (accounts/cart/orders reset when the instance restarts).
+#
+# For persistence on a PAID instance, uncomment SHOPSENSE_DB, the `disk:` block,
+# and switch plan to `starter`.
 services:
   - type: web
     name: shopsense
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/health
@@ -21,9 +21,10 @@ services:
         value: "22"
       - key: JWT_SECRET
         generateValue: true
-      - key: SHOPSENSE_DB
-        value: /var/data/shopsense.db
-    disk:
-      name: shopsense-data
-      mountPath: /var/data
-      sizeGB: 1
+      # --- persistent disk (paid instance only) ---
+      # - key: SHOPSENSE_DB
+      #   value: /var/data/shopsense.db
+    # disk:
+    #   name: shopsense-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
