@@ -2,6 +2,10 @@
 
 A working full-stack product-discovery platform with **hybrid search** (BM25 + vector + RRF) and a **hybrid recommender** (popularity, content-based, item-item collaborative filtering, matrix factorization), plus a persistent backend (auth, cart, orders, admin) backed by **SQLite**. Built with **zero runtime dependencies** — only Node.js built-ins (`node:http`, `node:sqlite`, `node:crypto`) — so it runs anywhere with `node src/server.js` and no `npm install`.
 
+> **Live demo:** https://shopsense-7djf.onrender.com &nbsp;·&nbsp; **Project abstract (PDF):** [`ShopSense-Project-Abstract.pdf`](ShopSense-Project-Abstract.pdf)
+>
+> Requires **Node.js 22.5+** (uses the built-in `node:sqlite`). See [Deploy on Render](#deploy-on-render).
+
 Inspired by the curation philosophy of [flash.co](https://flash.co): surface the best few, and explain why.
 
 ---
@@ -117,11 +121,11 @@ generators -> products.json + interactions.json -> seed SQLite -> build index + 
 
 ```
 .
-├── data/                     # generated seed data + SQLite db (git-ignored)
-│   ├── products.json
-│   ├── users.json
-│   ├── interactions.json
-│   └── shopsense.db          # created automatically on first run
+├── data/                     # seed data (committed) + SQLite db (generated)
+│   ├── products.json             # catalogue (committed so deploys work offline)
+│   ├── extra-products.json       # branded supplements (committed)
+│   ├── users.json  interactions.json
+│   └── shopsense.db              # created automatically on first run (git-ignored)
 ├── public/                   # frontend (no build step)
 │   ├── index.html  search.html  product.html  list.html  wishlist.html  admin.html
 │   ├── app.js
@@ -158,7 +162,11 @@ generators -> products.json + interactions.json -> seed SQLite -> build index + 
 │   ├── recommend/            # popularity, content, item-item CF, MF, service
 │   └── utils/                # minheap, lru, rng
 ├── tests/                    # node:test unit + API tests
+├── Dockerfile                # container image (Node 22) for Docker-based hosts
+├── render.yaml               # Render Blueprint (one-click deploy)
+├── .node-version             # pins Node 22
 ├── package.json
+├── ShopSense-Project-Abstract.pdf   # full project abstract
 └── README.md
 ```
 
@@ -194,32 +202,33 @@ Use a different port with `PORT=4000 npm start`, or a different database file wi
 
 ## Deploy on Render
 
-This is a **long-running Node service with a persistent SQLite file**, so it needs
-a host that gives you a writable disk — **Render** fits well. GitHub Pages / Vercel /
-Firebase Hosting are static or serverless and will not persist the database.
+**Live:** https://shopsense-7djf.onrender.com
 
-The repo ships a [`render.yaml`](render.yaml) Blueprint and a [`Dockerfile`](Dockerfile).
+This is a **long-running Node service with a SQLite file**, so it needs a host that
+runs a process (and ideally a writable disk) — **Render** fits well. GitHub Pages /
+Vercel / Firebase Hosting are static or serverless and will not persist the database.
 
-**Option A — Blueprint (fastest):**
-1. Push this repo to GitHub (already done).
-2. In Render: **New → Blueprint**, pick the repo. Render reads `render.yaml`.
-3. Apply. It creates a **Web Service** with:
-   - runtime **node**, start `npm start`, health check `/api/health`
-   - `NODE_VERSION=22`, generated `JWT_SECRET`, `SHOPSENSE_DB=/var/data/shopsense.db`
-   - a **1 GB persistent disk** mounted at `/var/data` (the database lives here)
+The repo ships a [`render.yaml`](render.yaml) Blueprint (defaults to the **free** plan)
+and a [`Dockerfile`](Dockerfile).
 
-**Option B — manual Web Service:**
-1. Render → **New → Web Service** → connect the repo.
-2. Runtime **Node**, Build `npm install`, Start `npm start`.
-3. Add env vars: `NODE_VERSION=22`, `JWT_SECRET=<random>`, `SHOPSENSE_DB=/var/data/shopsense.db`.
-4. Add a **Disk** mounted at `/var/data`.
-5. Deploy.
+**Blueprint (fastest):**
+1. In Render: **New → Blueprint**, then choose the repo. If it isn't listed, grant the
+   Render GitHub App access to it: GitHub → **Settings → Applications → Render →
+   repository access** (add `shopsense` or select all repos).
+2. Render reads `render.yaml` and shows the **shopsense** web service.
+3. Click **Apply**. It builds with `npm install` and starts with `npm start`; the
+   health check is `/api/health`.
+4. When the service shows **Live**, open its URL.
+
+**Manual Web Service:** New → Web Service → Node, Build `npm install`, Start `npm start`,
+health check path `/api/health`, env vars `NODE_VERSION=22` and `JWT_SECRET=<random>`.
 
 Notes:
-- **Node 22.5+ is required** (the app uses the built-in `node:sqlite`). `engines` / `.node-version` pin it.
-- Persistent disks need a **paid instance** (`plan: starter`). On the **free plan**, drop the `disk` block and `SHOPSENSE_DB`; the catalogue still works (seed JSON is committed) but accounts/cart/orders reset on restart.
-- No `npm install` is really needed (zero dependencies), but Render runs it harmlessly.
-- First boot seeds the SQLite database from the committed `data/*.json` (the full 579-product catalogue with real images).
+- **Node 22.5+ is required** (the app uses the built-in `node:sqlite`); `engines` and `.node-version` pin it.
+- **Free plan:** no persistent disk, so the committed catalogue always loads, but accounts/cart/orders reset when the instance restarts. Free instances also **sleep after ~15 min idle** (the next request can take 30–60s to wake).
+- **Persistence:** upgrade to a paid instance, then uncomment the `SHOPSENSE_DB` and `disk:` lines in `render.yaml` (a 1 GB disk at `/var/data` keeps the database).
+- `autoDeploy: true` → every push to `main` redeploys automatically.
+- First boot seeds SQLite from the committed `data/*.json` (the full **579-product** catalogue with real images).
 
 ---
 
