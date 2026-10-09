@@ -129,7 +129,7 @@ function productCard(p, opts = {}) {
   // score, always kept within 0-100 so the badge never shows four digits.
   let score = null;
   if (ai) {
-    score = `<div class="score-badge ai" title="${esc(aiTooltip(ai))}"><span class="ai-mark">AI</span>${ai.score}<span class="ai-of">/100</span></div>`;
+    score = `<div class="score-badge ai" title="${esc(aiTooltip(ai))}">${ai.score}</div>`;
   } else if (opts.score != null) {
     const n = opts.score <= 1 ? opts.score * 100 : opts.score;
     score = `<div class="score-badge">${Math.max(0, Math.min(100, Math.round(n)))}</div>`;
