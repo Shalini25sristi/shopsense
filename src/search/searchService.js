@@ -278,6 +278,7 @@ class SearchService {
         image: p.image || null,
         images: p.images || [],
         score: Math.round((scoreOf(p) / (maxScore || 1)) * 1000) / 1000,
+        aiScore: p.aiScore || null,
         reason: isRelated ? "You might also like" : this._reason(p, q),
         related: isRelated,
       };

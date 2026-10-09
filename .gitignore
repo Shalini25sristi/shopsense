@@ -7,6 +7,9 @@ npm-debug.log*
 coverage/
 *.log
 
+# Generated report PDF (kept local, not committed)
+ShopSense-Project-Abstract.pdf
+
 # Seed JSON is committed so deploys get the full catalogue offline.
 # Regenerate with `npm run seed`.
 

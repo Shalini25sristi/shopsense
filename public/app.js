@@ -124,7 +124,16 @@ function productImg(p, opts = {}) {
 function productCard(p, opts = {}) {
   const href = opts.href || `/product?id=${encodeURIComponent(p.id)}`;
   const rank = opts.rank != null ? `<div class="rank-badge">#${opts.rank}</div>` : "";
-  const score = opts.score != null ? `<div class="score-badge">${Math.round(opts.score * 100) || opts.score}</div>` : "";
+  const ai = p.aiScore;
+  // Prefer the AI spec score (0-100). Fall back to a normalised relevance
+  // score, always kept within 0-100 so the badge never shows four digits.
+  let score = null;
+  if (ai) {
+    score = `<div class="score-badge ai" title="${esc(aiTooltip(ai))}"><span class="ai-mark">AI</span>${ai.score}<span class="ai-of">/100</span></div>`;
+  } else if (opts.score != null) {
+    const n = opts.score <= 1 ? opts.score * 100 : opts.score;
+    score = `<div class="score-badge">${Math.max(0, Math.min(100, Math.round(n)))}</div>`;
+  }
   const reason = opts.reason ? `<div class="reason">${esc(opts.reason)}</div>` : "";
   const tags = (p.tags || []).slice(0, 3).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
   const mrp = p.mrp && p.mrp > p.price ? `<s>${money(p.mrp)}</s>` : "";
@@ -148,6 +157,39 @@ function productCard(p, opts = {}) {
       <button class="wish-heart ${on ? "on" : ""}" data-wish-id="${esc(p.id)}" type="button"
         aria-label="${on ? "Remove from wishlist" : "Add to wishlist"}"
         title="${on ? "Remove from wishlist" : "Add to wishlist"}">${on ? "&#9829;" : "&#9825;"}</button>
+    </div>`;
+}
+
+/** Human-readable tooltip for the AI spec score, built from its breakdown. */
+function aiTooltip(ai) {
+  const parts = Object.values(ai.breakdown || {}).map((b) => `${b.label}: ${b.value}/${b.max}`);
+  return [`AI spec score ${ai.score}/100 (grade ${ai.grade})`, ...parts].join("\n");
+}
+
+/** Larger AI spec score panel for the product detail page. */
+function aiScorePanel(ai) {
+  if (!ai) return "";
+  const parts = Object.values(ai.breakdown || {});
+  return `
+    <div class="ai-panel">
+      <div class="ai-panel-head">
+        <div class="ai-panel-score"><span class="ai-mark">AI</span>${ai.score}<span class="ai-of">/100</span></div>
+        <div class="ai-panel-meta">
+          <strong>AI spec score &middot; Grade ${esc(ai.grade)}</strong>
+          <span>Scored by AI from specifications, ratings, review volume and value</span>
+        </div>
+      </div>
+      <div class="ai-panel-bars">
+        ${parts
+          .map(
+            (b) => `<div class="ai-bar">
+          <span class="ai-bar-label">${esc(b.label)}</span>
+          <div class="ai-bar-track"><i style="width:${Math.round((b.value / b.max) * 100)}%"></i></div>
+          <span class="ai-bar-val">${b.value}/${b.max}</span>
+        </div>`
+          )
+          .join("")}
+      </div>
     </div>`;
 }
 
@@ -720,6 +762,7 @@ async function initProduct() {
         <div class="brand">${esc(p.brand)} &middot; ${esc(p.categoryPath.join(" / "))}</div>
         <h1>${esc(p.title)}</h1>
         <div class="rating">&#9733; ${p.rating} <span>(${Number(p.ratingCount).toLocaleString("en-IN")} ratings)</span></div>
+        ${aiScorePanel(p.aiScore)}
         <div class="price-big">${money(p.price)} ${p.mrp > p.price ? `<s>${money(p.mrp)}</s>` : ""}</div>
         ${offers.length > 1 ? `<div class="lowest-line">Lowest at <strong>${esc(offers[0].merchant)}</strong> &middot; compare ${offers.length} stores &darr;</div>` : ""}
         <div class="pill-row">${(p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>

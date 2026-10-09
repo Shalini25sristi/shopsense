@@ -9,6 +9,7 @@
  */
 const { SearchService } = require("../search/searchService");
 const { RecommendationService } = require("../recommend/recService");
+const { annotateAiScores } = require("../catalog/productScore");
 const { attachOffers } = require("../../scripts/generate-catalog");
 const {
   openDatabase,
@@ -78,6 +79,8 @@ function createStore(options = {}) {
     attachOffers(products);
     repo.products.saveMany(products);
   }
+  // Deterministic AI spec score (computed once per product, cached in memory).
+  annotateAiScores(products);
   const interactions = loadInteractions(db);
   const users = loadUsers(db);
 
@@ -128,6 +131,7 @@ function createStore(options = {}) {
     reloadProducts() {
       store.products = repo.products.all();
       if (!store.products.every((p) => Array.isArray(p.offers))) attachOffers(store.products);
+      annotateAiScores(store.products);
       store.search = new SearchService(store.products);
       store.recs = new RecommendationService(store.products, store.interactions, store.users, store.search);
       store.curatedLists = buildCuratedLists(store.products, store.recs.popularity);
