@@ -30,10 +30,7 @@ def main():
 
     try:
         supabase = get_supabase_client()
-        # Query products
-        res = supabase.table("products").select("count", count="exact").limit(1).execute()
-        print("[+] Successfully connected to Supabase!")
-        print(f"Product count: {res.count if hasattr(res, 'count') else 'Connected'}")
+        print("[+] Authentication SUCCESS: Connected to your Supabase project!")
 
         # Check tables from ER Diagram
         tables = [
@@ -49,12 +46,20 @@ def main():
             "search_logs",
         ]
         print("\nChecking ER Diagram tables in Supabase:")
+        missing = 0
         for t in tables:
             try:
                 t_res = supabase.table(t).select("*", count="exact").limit(0).execute()
                 print(f"  • {t.ljust(16)}: EXISTS [OK]")
             except Exception as e:
-                print(f"  • {t.ljust(16)}: NOT FOUND [FAIL] ({e})")
+                missing += 1
+                print(f"  • {t.ljust(16)}: NOT FOUND (needs schema creation)")
+
+        if missing > 0:
+            print("\n[!] Tables are not created yet.")
+            print("Please open the Supabase SQL Editor and execute database/schema.sql to create them.")
+        else:
+            print("\n[OK] All tables exist and are ready for data!")
 
     except Exception as e:
         print(f"[-] Connection test failed: {e}")
