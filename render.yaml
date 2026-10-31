@@ -1,12 +1,6 @@
 # Render Blueprint for ShopSense.
 # Docs: https://render.com/docs/blueprint-spec
-#
-# Default deploy uses the FREE plan (no billing required). The full catalogue is
-# committed as data/*.json, so the site works even though the free plan has no
-# persistent disk (accounts/cart/orders reset when the instance restarts).
-#
-# For persistence on a PAID instance, uncomment SHOPSENSE_DB, the `disk:` block,
-# and switch plan to `starter`.
+
 services:
   - type: web
     name: shopsense
@@ -21,10 +15,9 @@ services:
         value: "22"
       - key: JWT_SECRET
         generateValue: true
-      # --- persistent disk (paid instance only) ---
-      # - key: SHOPSENSE_DB
-      #   value: /var/data/shopsense.db
-    # disk:
-    #   name: shopsense-data
-    #   mountPath: /var/data
-    #   sizeGB: 1
+      - key: SUPABASE_URL
+        value: "https://nzccgolsbffelzdxtkom.supabase.co"
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
